@@ -1,8 +1,16 @@
 # blog-crearts
 Blog service for crearts.xyz hosted on Rapsberry PI nodes 
 
-## Issues
+### infra-service
+Contains spring-cloud-discovery & spring-cloud-config
 
+### core-frontend
+UI based on React-JS app
+
+### core-service
+Reactive Blog Service for blog.crearts.xyz
+
+## Issues & Solutions
 ### Config first time call http://localhost:8888
 move settings to bootstrap.properties
 

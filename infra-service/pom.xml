@@ -9,10 +9,10 @@
     </parent>
 
     <groupId>xyz.crearts.blog</groupId>
-    <artifactId>discovery</artifactId>
+    <artifactId>infra-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>discovery</name>
-    <description>Discovery service</description>
+    <name>infra-service</name>
+    <description>Infrastructure service</description>
 
     <packaging>jar</packaging>
 

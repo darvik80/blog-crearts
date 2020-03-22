@@ -25,8 +25,8 @@
 
     <modules>
         <module>infra-service</module>
-        <module>core-service</module>
         <module>core-frontend</module>
+        <module>core-service</module>
     </modules>
 
     <dependencyManagement>
