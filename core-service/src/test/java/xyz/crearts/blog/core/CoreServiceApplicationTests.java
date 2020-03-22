@@ -1,10 +1,10 @@
-package xyz.creart.blog.core;
+package xyz.crearts.blog.core;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CoreFrontendApplicationTests {
+class CoreServiceApplicationTests {
 
     @Test
     void contextLoads() {

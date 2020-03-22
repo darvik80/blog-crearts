@@ -1,15 +1,17 @@
-package xyz.crearts.blog.core;
+package xyz.crearts.blog.admin;
 
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableAdminServer
 @EnableDiscoveryClient
 @SpringBootApplication
-public class CoreServiiceApplication {
+public class AdminServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CoreServiiceApplication.class, args);
+        SpringApplication.run(AdminServiceApplication.class, args);
     }
 
 }

@@ -1,10 +1,10 @@
-package xyz.crearts.blog.core;
+package xyz.crearts.blog.admin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CoreServiiceApplicationTests {
+class AdminServiceApplicationTests {
 
     @Test
     void contextLoads() {

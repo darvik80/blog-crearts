@@ -1,0 +1,23 @@
+version: "3.2"
+
+services:
+  mysql:
+    image: mysql:latest
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    # restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: crearts
+      MYSQL_USER: darvik
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: darvik
+      RABBITMQ_DEFAULT_PASS: 1234
