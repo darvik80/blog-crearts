@@ -6,6 +6,7 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
+/*
 @Component
 public class CustomWebFilter implements WebFilter {
     @SuppressWarnings("NullableProblems")
@@ -18,3 +19,4 @@ public class CustomWebFilter implements WebFilter {
         return chain.filter(exchange);
     }
 }
+ */
