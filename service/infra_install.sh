@@ -9,6 +9,7 @@ service infra stop
 echo "# Setup service"
 cp -f service/infra.service /etc/systemd/system/infra.service
 systemctl daemon-reload
+systemctl enable core
 
 echo "# Start service"
 service infra start
