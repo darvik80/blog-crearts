@@ -8,7 +8,7 @@ User=root
 WorkingDirectory=/home/pi/jenkins/build
 #path to executable.
 #executable is a bash script which calls jar file
-ExecStart=infra-service/target/infra.sh
+ExecStart=/bin/sh infra-service/target/infra.sh
 SuccessExitStatus=143
 TimeoutStopSec=10
 Restart=on-failure
