@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cd /home/pi/jenkins/build
 echo $PWD
 
 echo "# Stop service"
