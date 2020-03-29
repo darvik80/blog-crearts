@@ -1,14 +1,14 @@
 #!/bin/sh
 
-echo "# Run infra service"
+echo "# Run core service"
 
 cd /home/pi/jenkins/build
 echo "# Stop service"
-service infra stop
+service core stop
 
 echo "# Setup service"
-cp -f service/infra.service /etc/systemd/system/infra.service
+cp -f service/core.service /etc/systemd/system/core.service
 systemctl daemon-reload
 
 echo "# Start service"
-service infra start
+service core start
