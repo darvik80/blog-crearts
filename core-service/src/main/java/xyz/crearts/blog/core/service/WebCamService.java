@@ -6,12 +6,17 @@ import com.github.sarxos.webcam.WebcamListener;
 import com.github.sarxos.webcam.WebcamResolution;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
-import java.awt.image.BufferedImage;
+import javax.annotation.PreDestroy;
+import javax.imageio.ImageIO;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.function.Consumer;
 
 /**
@@ -19,65 +24,101 @@ import java.util.function.Consumer;
  */
 @Slf4j
 @Service
-public class WebCamService implements WebcamListener {
+public class WebCamService implements WebcamListener, Runnable {
     public final static String DEFAULT_CAMERA = "default";
     private final Webcam webcam;
 
-    private BufferedImage lastImage = null;
-    private Set<Consumer<BufferedImage>> consumers = new HashSet<>();
+    private Set<Consumer<byte[]>> consumers = new HashSet<>();
+
+    enum Command {
+        Quit,
+        Start,
+        Stop
+    }
+    final private BlockingQueue<Command> commandQueue = new LinkedBlockingQueue<>();
+    final Thread threadCtrl;
 
     public WebCamService(@Value("${spring.webcam.name:default}") final String camName) {
         this.webcam = DEFAULT_CAMERA.compareToIgnoreCase(camName) == 0 ? Webcam.getDefault() : Webcam.getWebcamByName(camName);
+        webcam.setViewSize(WebcamResolution.VGA.getSize());
+        webcam.addWebcamListener(this);
+
+        threadCtrl = new Thread(this);
+        threadCtrl.start();
     }
 
-    public void start() {
-        if (!webcam.isOpen()) {
-            webcam.setViewSize(WebcamResolution.VGA.getSize());
-            webcam.addWebcamListener(this);
-            webcam.open(true);
-        }
+    @PreDestroy
+    public void preDestroy() throws InterruptedException {
+        threadCtrl.interrupt();
+        threadCtrl.join();
     }
 
-    public void stop() {
-        if (webcam.isOpen()) {
-            webcam.close();
-        }
-    }
-
-    public synchronized void subscribe(Consumer<BufferedImage> consumer) {
+    public synchronized void subscribe(Consumer<byte[]> consumer) {
         if (consumers.size() == 0) {
-            start();
+            commandQueue.add(Command.Start);
         }
         consumers.add(consumer);
     }
 
-    public synchronized void unsubscribe(Consumer<BufferedImage> consumer) {
+    public synchronized void unsubscribe(Consumer<byte[]> consumer) {
         consumers.remove(consumer);
 
         if (consumers.size() == 0) {
-            stop();
+            commandQueue.add(Command.Stop);
         }
     }
 
     @Override
     public void webcamOpen(WebcamEvent we) {
-        log.info("Camera available {}", we.getSource().getDevice().getName());
+        log.info("Thread {} Camera available {}", Thread.currentThread().getName(), we.getSource().getDevice().getName());
     }
 
     @Override
     public void webcamClosed(WebcamEvent we) {
-        log.info("Camera closed {}", we.getSource().getDevice().getName());
+        log.info("Thread {} Camera closed {}", Thread.currentThread().getName(), we.getSource().getDevice().getName());
     }
 
     @Override
     public void webcamDisposed(WebcamEvent we) {
-        log.info("Camera image disposed {}", we.getSource().getDevice().getName());
+        log.info("Thread {} Camera image disposed {}", Thread.currentThread().getName(), we.getSource().getDevice().getName());
     }
 
     @Override
     public synchronized void webcamImageObtained(WebcamEvent we) {
-        consumers.forEach(consumer -> {
-            consumer.accept(we.getImage());
-        });
+        final ByteArrayOutputStream os = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(we.getImage(), "JPEG", os);
+            var rawImage = os.toByteArray();
+            consumers.forEach(consumer -> {
+                consumer.accept(rawImage);
+            });
+        } catch (final IOException ioe) {
+            throw new UncheckedIOException(ioe);
+        }
+    }
+
+    @Override
+    public void run() {
+        log.info("Start control thread");
+        try {
+            while (true) {
+                switch (commandQueue.take()) {
+                    case Start:
+                        if (!webcam.isOpen()) {
+                            webcam.open(true);
+                        }
+                        break;
+                    case Stop:
+                        if (webcam.isOpen()) {
+                            webcam.close();
+                        }
+                        break;
+                    default:
+                        return;
+                }
+            }
+        } catch (InterruptedException ignore) {
+            log.info("Stop control thread");
+        }
     }
 }
