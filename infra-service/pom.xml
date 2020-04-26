@@ -5,12 +5,12 @@
     <parent>
         <groupId>xyz.crearts</groupId>
         <artifactId>blog</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2</version>
     </parent>
 
     <groupId>xyz.crearts.blog</groupId>
     <artifactId>infra-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>infra-service</name>
     <description>Infrastructure service</description>
 

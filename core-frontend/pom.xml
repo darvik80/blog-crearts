@@ -5,12 +5,12 @@
     <parent>
         <groupId>xyz.crearts</groupId>
         <artifactId>blog</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2</version>
     </parent>
 
     <groupId>xyz.creart.blog</groupId>
     <artifactId>core-frontend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>core-frontend</name>
     <description>ReactJS frontend for blog.crearts.xyz</description>
     <packaging>jar</packaging>

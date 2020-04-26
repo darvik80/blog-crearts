@@ -29,3 +29,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+bootstrap-dev.properties
+application-dev.properties
+
+node_modules
+node
