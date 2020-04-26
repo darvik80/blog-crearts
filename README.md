@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/darvik80/blog-crearts.svg)](https://jitpack.io/#darvik80/blog-crearts)
+
 # blog-crearts
 Blog service for crearts.xyz hosted on Rapsberry PI nodes 
 
