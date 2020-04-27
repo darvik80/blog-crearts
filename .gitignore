@@ -30,6 +30,8 @@ build/
 ### VS Code ###
 .vscode/
 
+docker/jenkins/home
+
 bootstrap-dev.properties
 application-dev.properties
 
