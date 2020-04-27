@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/darvik80/blog-crearts.svg?branch=db)](https://travis-ci.org/darvik80/blog-crearts)
+[![](https://jitpack.io/v/darvik80/blog-crearts.svg)](https://jitpack.io/#darvik80/blog-crearts)
+
 # blog-crearts
 Blog service for crearts.xyz hosted on Rapsberry PI nodes 
 

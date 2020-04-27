@@ -5,19 +5,19 @@
     <parent>
         <groupId>xyz.crearts</groupId>
         <artifactId>blog</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2</version>
     </parent>
 
     <groupId>xyz.crearts.blog</groupId>
     <artifactId>core-serviice</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>core-service</name>
     <description>Demo project for Spring Boot</description>
 
     <packaging>jar</packaging>
 
     <properties>
-        <core-frontend.version>0.0.1-SNAPSHOT</core-frontend.version>
+        <core-frontend.version>0.0.2</core-frontend.version>
     </properties>
 
     <dependencies>
