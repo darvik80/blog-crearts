@@ -1,0 +1,6 @@
+# Blog Service DNS records
+127.0.0.1 discovery.local
+127.0.0.1 config.local
+127.0.0.1 mysql.local
+127.0.0.1 mongodb.local
+127.0.0.1 rabbitmq.local
