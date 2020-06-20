@@ -57,9 +57,6 @@ jobs:
           name: Deploy scripts
           command: scp -r service/*.* $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy/service
       - run:
-          name: Instakk infra-service
-          command: ssh $DEPLOY_USER@$DEPLOY_NODE "sh /home/$DEPLOY_USER/blog_deploy/service/infra_install.sh"
-      - run:
           name: Start infra-service
           command: ssh $DEPLOY_USER@$DEPLOY_NODE "service infra restart"
 workflows:
