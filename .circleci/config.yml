@@ -39,6 +39,9 @@ jobs:
     machine: true
     working_directory: ~/repo
     steps:
+      - add_ssh_keys:
+          fingerprints:
+          - "36:3d:62:07:50:47:68:a5:f2:95:90:61:53:55:53:8e"
       - attach_workspace:
           at: ~/repo
       - run:
