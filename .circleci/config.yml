@@ -1,8 +1,9 @@
 version: 2
 jobs:
-  maven/test:
+  build:
     docker:
       - image: circleci/openjdk:11-jdk-node
+    working_directory: ~/repo
     steps:
       - checkout
       - run:
@@ -26,25 +27,31 @@ jobs:
           name: Build
           command: mvn package -DskipTests=true
       - store_artifacts:
+          path: core-service/target/core.jar
+      - store_artifacts:
+          path: infra-service/target/infra.jar
+      - persist_to_workspace:
+          root: ~/repo
           paths:
-            - core-service/target/core.jar
-            - infra-service/target/core.jar
+            - core-service/target
+            - infra-service/target
   deploy:
-    machine:
-      enabled: true
-    - steps:
+    machine: true
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
       - run:
-        name: Generate Cache Checksum
-        command: echo 'Deploy!!!'
-
+          name: Deploy core-service
+          command: scp -r core-service/target/*.jar $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy
+      - run:
+          name: Deploy infra-service
+          command: scp -r core-service/target/*.jar $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy
 workflows:
-  maven_test:
+  build:
     jobs:
-      - maven/test
+      - build
       - deploy:
-        requires:
-          - maven/test
-        filters:
-          branches:
-            only: circleci-project-setup
+          requires:
+            - build
   version: 2
