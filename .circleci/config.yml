@@ -21,9 +21,30 @@ jobs:
             - ~/.m2
           key: maven-{{ checksum "/tmp/maven_cache_seed" }}
       - store_test_results:
-          path: target/surefire-reports
+          path: core-service/target/surefire-reports
+      - run:
+          name: Build
+          command: mvn package -DskipTests=true
+      - store_artifacts:
+          paths:
+            - core-service/target/core.jar
+            - infra-service/target/core.jar
+  deploy:
+    machine:
+      enabled: true
+    - steps:
+      - run:
+        name: Generate Cache Checksum
+        command: echo 'Deploy!!!'
+
 workflows:
   maven_test:
     jobs:
       - maven/test
+      - deploy:
+        requires:
+          - maven/test
+        filters:
+          branches:
+            only: circleci-project-setup
   version: 2
