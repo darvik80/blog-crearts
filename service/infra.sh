@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/java -jar infra-service/target/infra.jar
+/usr/bin/java -jar infra.jar

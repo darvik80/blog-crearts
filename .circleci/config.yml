@@ -48,6 +48,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
+          name: Setup remote
+          command: ssh $DEPLOY_USER@$DEPLOY_NODE "mkdir -p /home/$DEPLOY_USER/blog_deploy/service"
+      - run:
           name: Deploy core-service
           command: scp -r core-service/target/*.jar $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy
       - run:
@@ -58,7 +61,7 @@ jobs:
           command: scp -r service/*.* $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy/service
       - run:
           name: Start infra-service
-          command: ssh $DEPLOY_USER@$DEPLOY_NODE "service infra restart"
+          command: ssh $DEPLOY_USER@$DEPLOY_NODE "sudo service infra restart"
 workflows:
   build:
     jobs:
