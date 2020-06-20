@@ -30,11 +30,14 @@ jobs:
           path: core-service/target/core.jar
       - store_artifacts:
           path: infra-service/target/infra.jar
+      - store_artifacts:
+          path: service
       - persist_to_workspace:
           root: ~/repo
           paths:
             - core-service/target
             - infra-service/target
+            - service
   deploy:
     machine: true
     working_directory: ~/repo
@@ -49,7 +52,16 @@ jobs:
           command: scp -r core-service/target/*.jar $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy
       - run:
           name: Deploy infra-service
-          command: scp -r core-service/target/*.jar $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy
+          command: scp -r infra-service/target/*.jar $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy
+      - run:
+          name: Deploy scripts
+          command: scp -r service/*.* $DEPLOY_USER@$DEPLOY_NODE:/home/$DEPLOY_USER/blog_deploy/service
+      - run:
+          name: Instakk infra-service
+          command: ssh $DEPLOY_USER@$DEPLOY_NODE "sh /home/$DEPLOY_USER/blog_deploy/service/infra_install.sh"
+      - run:
+          name: Start infra-service
+          command: ssh $DEPLOY_USER@$DEPLOY_NODE "service infra restart"
 workflows:
   build:
     jobs:

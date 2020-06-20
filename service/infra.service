@@ -5,7 +5,7 @@ Description=Infra service
 User=root
 # The configuration file application.properties should be here:
 #change this to your workspace
-WorkingDirectory=/home/pi/jenkins/build
+WorkingDirectory=/home/darvik/blog_deploy
 #path to executable.
 #executable is a bash script which calls jar file
 ExecStart=/bin/sh service/infra.sh

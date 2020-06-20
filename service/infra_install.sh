@@ -2,7 +2,7 @@
 
 echo "# Run infra service"
 
-cd /home/pi/jenkins/build
+cd ~/blog_deploy
 echo "# Stop service"
 service infra stop
 

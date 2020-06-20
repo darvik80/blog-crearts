@@ -2,7 +2,7 @@
 
 echo "# Run core service"
 
-cd /home/pi/jenkins/build
+cd ~/blog_deploy
 echo "# Stop service"
 service core stop
 
