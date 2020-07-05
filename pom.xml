@@ -24,6 +24,7 @@
     </properties>
 
     <modules>
+        <module>chat-service</module>
         <module>infra-service</module>
         <module>core-frontend</module>
         <module>core-service</module>
@@ -47,13 +48,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-    </dependencies>
 
     <repositories>
         <repository>

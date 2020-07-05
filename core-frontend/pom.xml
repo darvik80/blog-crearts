@@ -8,7 +8,7 @@
         <version>0.0.2</version>
     </parent>
 
-    <groupId>xyz.creart.blog</groupId>
+    <groupId>xyz.crearts.blog</groupId>
     <artifactId>core-frontend</artifactId>
     <version>0.0.2</version>
     <name>core-frontend</name>
