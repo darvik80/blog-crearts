@@ -1,17 +1,21 @@
-package xyz.crearts.blog.core.r2dbc.entry;
+package xyz.crearts.blog.core.r2dbc.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table("mime_type")
-public class MimeTypeDO {
+@Table("link_content_tag")
+@Getter
+@Setter
+public class LinkContentTagDO {
     @Id
     private Long id;
-    private String name;
+
+    private Long contentId;
+    private Long tagId;
 }

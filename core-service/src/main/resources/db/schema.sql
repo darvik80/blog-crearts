@@ -20,7 +20,7 @@ CREATE TABLE `account`
 (
     `id`      int(11) NOT NULL AUTO_INCREMENT,
     `user_id` int(11) NOT NULL,
-    `role_id`    int(11) NOT NULL,
+    `role_id` int(11) NOT NULL,
     PRIMARY KEY (`id`),
     KEY `idx_user_id` (`user_id`),
     KEY `idx_role` (`role_id`)
@@ -122,7 +122,8 @@ CREATE TABLE `link_content_tag`
     `tag_id`     int(11) NOT NULL,
     PRIMARY KEY (`id`),
     KEY `idx_content_id` (`content_id`),
-    KEY `idx_tag_id` (`tag_id`)
+    KEY `idx_tag_id` (`tag_id`),
+    UNIQUE KEY `idx_content_tag` (`content_id`, `tag_id`)
 );
 
 DROP TABLE IF EXISTS `link_content_file`;
@@ -133,5 +134,6 @@ CREATE TABLE `link_content_file`
     `file_id`    int(11) NOT NULL,
     PRIMARY KEY (`id`),
     KEY `idx_content_id` (`content_id`),
-    KEY `idx_file_id` (`file_id`)
+    KEY `idx_file_id` (`file_id`),
+    UNIQUE KEY `idx_content_file` (`content_id`, `file_id`)
 );
