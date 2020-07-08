@@ -9,7 +9,7 @@ import Main from "./views/Main";
 import Route from "react-router-dom/es/Route";
 import Switch from "react-bootstrap/cjs/Switch";
 import Articles from "./views/Articles";
-import logoGear from "./assets/img/logo-gear.png"
+import logo from "./assets/img/logo.png"
 
 function App() {
 
@@ -19,15 +19,7 @@ function App() {
                 <Col>
                     <h1>
                         <a href="/">
-                            <img src={logoGear} alt="logo-gear" width={48}/>
-                            <b style={{color: 'red'}}>C</b>
-                            <b style={{color: 'blue'}}>r</b>
-                            <b style={{color: 'green'}}>e</b>
-                            <b style={{color: 'black'}}>A</b>
-                            <b style={{color: 'teal'}}>r</b>
-                            <b style={{color: 'orange'}}>t</b>
-                            <b style={{color: 'lime'}}>S</b>
-                            <b>.xyz</b>
+                            <img src={logo} alt="logo-gear"/>
                         </a>
                     </h1>
                 </Col>
