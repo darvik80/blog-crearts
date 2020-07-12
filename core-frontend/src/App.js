@@ -10,6 +10,7 @@ import Route from "react-router-dom/es/Route";
 import Switch from "react-bootstrap/cjs/Switch";
 import Articles from "./views/Articles";
 import logo from "./assets/img/logo.png"
+import ContentEditor from "./views/admin/ContentEditor";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
                 <Col>
                     <h1>
                         <a href="/">
-                            <img src={logo} alt="logo-gear"/>
+                            <img src={logo} alt="logo-" height="128"/>
                         </a>
                     </h1>
                 </Col>
@@ -39,12 +40,25 @@ function App() {
                             </Navbar>
                         </Col>
                     </Row>
+                    <Row>
+                        <Col>
+                            <Navbar expand="lg" variant="light">
+                                <Navbar.Collapse>
+                                    <Nav className="mr-auto flex-column">
+                                        <Nav.Link href="/admin/content">Add Content</Nav.Link>
+                                    </Nav>
+                                </Navbar.Collapse>
+                            </Navbar>
+                        </Col>
+                    </Row>
                 </Col>
                 <Col md={8} className="text-justify">
                     <Switch>
                         <Route exact path='/' component={Main}/>
                         <Route path='/articles' component={Articles}/>
                         <Route path='/blog' component={Main}/>
+
+                        <Route path='/admin/content' component={ContentEditor}/>
                     </Switch>
                 </Col>
                 <Col md={2}></Col>
