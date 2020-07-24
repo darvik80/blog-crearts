@@ -21,12 +21,12 @@
         <java.version>11</java.version>
         <maven.compiler.release>11</maven.compiler.release>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
     </properties>
 
     <modules>
         <module>chat-service</module>
         <module>infra-service</module>
+        <module>core-api</module>
         <module>core-frontend</module>
         <module>core-service</module>
     </modules>
@@ -40,10 +40,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.1.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
