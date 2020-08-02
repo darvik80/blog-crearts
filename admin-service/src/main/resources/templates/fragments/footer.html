@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:fragment="main">
+    <!-- jQuery -->
+    <script src="/webjars/AdminLTE/3.0.5/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/webjars/AdminLTE/3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <th:block th:if="#{features.contains('database')}">
+        <!-- DataTables -->
+        <script src="/webjars/AdminLTE/3.0.5/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="/webjars/AdminLTE/3.0.5/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="/webjars/AdminLTE/3.0.5/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="/webjars/AdminLTE/3.0.5/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    </th:block>
+
+    <!-- AdminLTE App -->
+    <script src="/webjars/AdminLTE/3.0.5/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/webjars/AdminLTE/3.0.5/dist/js/demo.js"></script>
+</th:block>
+</html>

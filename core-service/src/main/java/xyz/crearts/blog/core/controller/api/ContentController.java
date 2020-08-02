@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import xyz.crearts.blog.core.dto.ContentDTO;
-import xyz.crearts.blog.core.dto.LightContentDTO;
+import xyz.crearts.blog.dto.ContentDTO;
+import xyz.crearts.blog.dto.LightContentDTO;
 import xyz.crearts.blog.core.service.ContentService;
 
 @RestController

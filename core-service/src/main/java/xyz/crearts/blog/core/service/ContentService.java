@@ -4,8 +4,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import xyz.crearts.blog.core.dto.ContentDTO;
-import xyz.crearts.blog.core.dto.LightContentDTO;
+import xyz.crearts.blog.dto.ContentDTO;
+import xyz.crearts.blog.dto.LightContentDTO;
 import xyz.crearts.blog.core.mapper.ContentMapper;
 import xyz.crearts.blog.core.r2dbc.repository.ContentRepository;
 
