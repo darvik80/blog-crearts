@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>crearts.xyz</title>
+    <th:block th:replace="fragments/header :: main"/>
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <th:block th:replace="fragments/navbar :: navbar"/>
+    <th:block th:replace="fragments/sidebar :: sidebar"/>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" th:replace="pages/__${page}__ :: content">content</div>
+    <!-- /.content-wrapper -->
+
+    <footer th:replace="fragments/copyright :: copyright">footer</footer>
+</div>
+<!-- ./wrapper -->
+
+<th:block th:replace="fragments/footer :: main"/>
+</body>
+</html>

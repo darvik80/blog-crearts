@@ -11,7 +11,8 @@ public class CustomWebFilter implements WebFilter {
     @SuppressWarnings("NullableProblems")
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        if (exchange.getRequest().getURI().getPath().equals("/")) {
+        String path = exchange.getRequest().getURI().getPath();
+        if (path.matches("/[\\w]*")) {
             return chain.filter(exchange.mutate().request(exchange.getRequest().mutate().path("/index.html").build()).build());
         }
 
