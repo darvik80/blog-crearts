@@ -139,6 +139,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>admin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
