@@ -11,12 +11,12 @@ import javax.persistence.*;
 @Table(name = "link_content_file")
 public class LinkContentFile {
     @Id
-    @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "content_id")
-    private Integer contentId;
+    private Long contentId;
 
     @Column(name = "file_id")
-    private Integer fileId;
+    private Long fileId;
 }

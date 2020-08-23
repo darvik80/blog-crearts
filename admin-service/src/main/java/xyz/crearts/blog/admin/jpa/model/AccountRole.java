@@ -9,10 +9,9 @@ import javax.persistence.*;
 @Table(name = "account_role")
 @Getter
 @Setter
-
 public class AccountRole {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "name")

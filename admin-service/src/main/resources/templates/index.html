@@ -6,6 +6,9 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
+
+<th:block th:replace="fragments/footer :: main"/>
+
 <div class="wrapper">
 
     <th:block th:replace="fragments/navbar :: navbar"/>
@@ -18,7 +21,5 @@
     <footer th:replace="fragments/copyright :: copyright">footer</footer>
 </div>
 <!-- ./wrapper -->
-
-<th:block th:replace="fragments/footer :: main"/>
 </body>
 </html>

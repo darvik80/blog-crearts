@@ -11,8 +11,8 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
     @Id
-    @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "created_at")
     private java.sql.Timestamp createdAt;

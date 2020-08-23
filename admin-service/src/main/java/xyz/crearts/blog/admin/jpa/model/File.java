@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class File {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "created_at")
     private java.sql.Timestamp createdAt;

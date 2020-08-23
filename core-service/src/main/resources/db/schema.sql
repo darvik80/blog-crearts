@@ -38,7 +38,7 @@ CREATE TABLE `account_role`
 DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content`
 (
-    `id`         int(11)                                 NOT NULL,
+    `id`         int(11)                                 NOT NULL AUTO_INCREMENT,
     `created_at` datetime                                NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` datetime                                         DEFAULT NULL,
     `type`       int(11)                                 NOT NULL DEFAULT '1',

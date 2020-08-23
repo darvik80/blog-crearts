@@ -17,19 +17,46 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Status</th>
-                                <th>Modified At</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="articles" class="table table-sm table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Modified At</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: content">
+                                    <tr>
+                                        <th scope="row" data-bind="text: $index() + 1">Index</th>
+                                        <td>
+                                            <div data-bind="text: title">Title</div>
+                                            <span class="badge badge-success"
+                                                  data-bind="text: tags.map(item => item.name)">"tags</span>
+                                        </td>
+                                        <td data-bind="text: status">Status</td>
+                                        <td data-bind="text: updatedAt == null ? createdAt : updatedAt">Date</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item"><a class="page-link" href="#">First</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">..</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Last</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,7 +64,39 @@
     </section>
     <!-- /.content -->
 
-    <script>
+    <script type="text/javascript">
+        function ArticlesTableModel() {
+            let self = this;
+            fetch("/api/articles/page")
+                .then(res => res.json())
+                .then(
+                    data => self.content(data.content),
+                    error => console.log(error))
 
+            self.content = ko.observableArray([
+                {
+                    title: "Hello World",
+                    status: "CS_DRAFT",
+                    createdAt: "2020-07-05T03:02:11.000+00:00",
+                    updatedAt: null,
+                    tags: [
+                        {id: 1, name: "dev", color: 8509648},
+                        {id: 1, name: "arduino", color: 8509648}
+                    ]
+                },
+                {
+                    title: "Brand new world",
+                    status: "CS_PUBLISHED",
+                    createdAt: "2020-07-05T05:02:11.000+00:00",
+                    updatedAt: "2020-07-05T06:02:11.000+00:00",
+                    tags: [
+                        {id: 1, name: "dev", color: 8509648}
+                    ]
+                }
+            ]);
+        }
+
+        // Activates knockout.js
+        ko.applyBindings(new ArticlesTableModel());
     </script>
 </div>

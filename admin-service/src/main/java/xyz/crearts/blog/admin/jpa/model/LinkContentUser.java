@@ -11,12 +11,12 @@ import javax.persistence.*;
 @Table(name = "link_content_user")
 public class LinkContentUser {
     @Id
-    @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "content_id")
-    private Integer contentId;
+    private Long contentId;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private Long userId;
 }

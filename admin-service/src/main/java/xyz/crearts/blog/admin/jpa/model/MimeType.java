@@ -11,8 +11,8 @@ import javax.persistence.*;
 @Table(name = "mime_type")
 public class MimeType {
     @Id
-    @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "name")
     private String name;

@@ -11,12 +11,12 @@ import javax.persistence.*;
 @Setter
 public class Account {
     @Id
-    @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private Long userId;
 
     @Column(name = "role_id")
-    private Integer roleId;
+    private Long roleId;
 }
