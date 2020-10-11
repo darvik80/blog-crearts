@@ -38,8 +38,3 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: darvik
       ME_CONFIG_MONGODB_ADMINPASSWORD: 1234
-
-  jira:
-    image: atlassian/jira-software
-    ports:
-      - "8080:8080"
