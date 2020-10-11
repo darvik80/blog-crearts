@@ -8,7 +8,7 @@ export default function TextPage(props) {
             <Row key={idx}>
                 <Col>
                     <TextBlock
-                        state={(idx&0x01) ? 'right' : 'left'}
+                        state={(idx & 0x01 ? 'right' : 'left')}
                         image={item.image}
                         title={item.title}
                         text={item.text}

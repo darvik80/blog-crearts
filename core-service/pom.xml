@@ -36,11 +36,6 @@
             <artifactId>core-frontend</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>xyz.crearts.blog</groupId>
-            <artifactId>chat-service</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
         <!-- Dubbo { -->
         <dependency>

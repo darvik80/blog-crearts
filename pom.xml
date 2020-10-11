@@ -27,7 +27,6 @@
 
     <modules>
         <module>common-data</module>
-        <module>chat-service</module>
         <module>infra-service</module>
         <module>core-api</module>
         <module>core-frontend</module>

@@ -24,15 +24,12 @@ function App() {
             <Row>
                 <Col>
                     <Navbar expand="lg">
-                        <Navbar.Brand href="#home">
+                        <Navbar.Brand href="/">
                             <Image src={logo} alt="logo-" height="128"/>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                                <Nav.Item>
-                                    <Nav.Link href="/">Home</Nav.Link>
-                                </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link href="/blog">Blog</Nav.Link>
                                 </Nav.Item>

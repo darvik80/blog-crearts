@@ -6,10 +6,11 @@ import Badge from "react-bootstrap/Badge";
 import Media from "react-bootstrap/Media";
 
 export default function TextBlock(props) {
-    let tags = [];
-    props.tags.map(function (val, idx) {
-        tags.push(<Badge key={idx} variant={val.color}>{val.tag}</Badge>);
-    });
+    let tags = props.tags.map((val, idx) =>
+        (
+            <Badge key={idx} variant={val.color}>{val.tag}</Badge>
+        )
+    )
 
     return (
         <Media border="0">
