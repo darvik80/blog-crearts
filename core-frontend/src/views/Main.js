@@ -4,7 +4,6 @@ import {Container, Row} from "react-bootstrap";
 import blogImg from "../assets/img/blog-trumb.jpg";
 import articlesImg from "../assets/img/articles-trumb-rect.jpg";
 import Blocks from "../components/Blocks";
-import Blog from "./Blog";
 
 export default function Main() {
     const data = {
