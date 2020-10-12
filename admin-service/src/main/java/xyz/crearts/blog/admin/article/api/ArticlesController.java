@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import xyz.crearts.blog.admin.article.mapper.ContentMapper;
 import xyz.crearts.blog.admin.article.service.ArticleService;
 import xyz.crearts.blog.admin.controller.api.CrudController;
-import xyz.crearts.blog.admin.jpa.model.Content;
 import xyz.crearts.blog.dto.ContentDTO;
-import xyz.crearts.blog.enums.ContentStatus;
+import xyz.crearts.blog.jpa.entity.Content;
+import xyz.crearts.blog.jpa.enums.ContentStatus;
 
 @RestController
 @RequestMapping("/api/articles")

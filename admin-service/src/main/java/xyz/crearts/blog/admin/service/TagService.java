@@ -5,12 +5,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import xyz.crearts.blog.admin.jpa.model.Content_;
-import xyz.crearts.blog.admin.jpa.model.Tag;
-import xyz.crearts.blog.admin.jpa.repository.TagRepository;
-import xyz.crearts.blog.enums.ContentType;
+import xyz.crearts.blog.jpa.entity.Tag;
+import xyz.crearts.blog.jpa.enums.ContentType;
+import xyz.crearts.blog.jpa.repository.TagRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,8 +31,8 @@ public class TagService implements CrudService<Tag, String> {
     public Page<Tag> getPage(Pageable page, String filter) {
         return repository.findAll(
                 (root, query, builder) -> builder.and(
-                        root.get(Content_.TYPE).in(ContentType.CT_ARTICLE),
-                        StringUtils.isEmpty(filter) ? builder.and() : builder.like(root.get(Content_.TITLE), filter + "%")
+                        root.get("type").in(ContentType.CT_ARTICLE),
+                        StringUtils.isEmpty(filter) ? builder.and() : builder.like(root.get("title"), filter + "%")
                 ),
                 page
         );
@@ -65,7 +67,7 @@ public class TagService implements CrudService<Tag, String> {
 
             tags.forEach(tag -> {
                 if (!existed.contains(tag)) {
-                    result.add(repository.save(Tag.builder().name(tag).color(DEFAULT_COLOR).build()));
+                    //result.add(repository.save(Tag.builder().name(tag).color(DEFAULT_COLOR).build()));
                 }
             });
             result.addAll(existsTags);

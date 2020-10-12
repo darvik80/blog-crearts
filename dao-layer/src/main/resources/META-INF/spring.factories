@@ -1,0 +1,2 @@
+rg.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  xyz.crearts.blog.jpa.configuration.JpaConfiguration

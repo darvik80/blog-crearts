@@ -2,8 +2,8 @@ package xyz.crearts.blog.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import xyz.crearts.blog.enums.ContentStatus;
-import xyz.crearts.blog.enums.ContentType;
+import xyz.crearts.blog.jpa.enums.ContentStatus;
+import xyz.crearts.blog.jpa.enums.ContentType;
 
 import java.util.Date;
 import java.util.List;
