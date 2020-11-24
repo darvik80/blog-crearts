@@ -34,3 +34,4 @@ docker/jenkins/home
 
 bootstrap-dev.properties
 application-dev.properties
+*-dev.properties
